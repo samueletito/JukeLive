@@ -7,8 +7,7 @@ function App() {
   const [joined, setJoined] = useState(false);
 
   const loginWithSpotify = () => {
-    //window.location.href = "https:/render/login";
-    window.location.href = "http://localhost:3001/login";
+    window.location.href = "https://jukelive.onrender.com/login";
   };
 
   const joinSession = async () => {
@@ -21,7 +20,7 @@ function App() {
     if (!identifier || !songUri) return;
     try {
       //await axios.post("https://render/add-song", { identifier, songUri });
-      await axios.post("http://localhost:3001/add-song", { identifier, songUri });
+      await axios.post("https://jukelive.onrender.com/add-song", { identifier, songUri });
       alert("Canción añadida a la cola");
     } catch (error) {
       alert("Error al añadir la canción");
