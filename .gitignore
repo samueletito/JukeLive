@@ -1,0 +1,9 @@
+# Ignorar node_modules (dependencias) de frontend y backend
+**/node_modules/
+
+# Ignorar carpetas de build y dist generadas
+**/build/
+**/dist/
+
+# Ignorar archivos de entorno
+**/.env
