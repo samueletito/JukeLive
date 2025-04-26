@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 
 // VARIABLES DE ENTORNO
-const BACKEND_URL = import.meta.env.BACKEND_URL;
+const VITE_BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 function App() {
   // VARIABLES DE ESTADO
@@ -12,7 +12,7 @@ function App() {
 
   // FUNCIONES
   const loginWithSpotify = () => {
-    window.location.href = `${BACKEND_URL}/login`;
+    window.location.href = `${VITE_BACKEND_URL}/login`;
   };
 
   const joinSession = () => {
@@ -24,7 +24,7 @@ function App() {
   const addSong = async () => {
     if (!identifier || !songUri) return;
     try {
-      await axios.post(`${BACKEND_URL}/add-song`, { identifier, songUri });
+      await axios.post(`${VITE_BACKEND_URL}/add-song`, { identifier, songUri });
       alert("Canción añadida a la cola");
     } catch (error) {
       alert("Error al añadir la canción");
