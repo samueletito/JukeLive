@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 
-function App() {
-  const [identifier, setIdentifier] = useState("");
-  const [songUri, setSongUri] = useState("");
-  const [joined, setJoined] = useState(false);
+// VARIABLES DE ENTORNO
+const BACKEND_URL = import.meta.env.BACKEND_URL;
 
+function App() {
+  // VARIABLES DE ESTADO
+  const [identifier, setIdentifier] = React.useState("");
+  const [songUri, setSongUri] = React.useState("");
+  const [joined, setJoined] = React.useState(false);
+
+  // FUNCIONES
   const loginWithSpotify = () => {
-    window.location.href = "https://jukelive.onrender.com/login";
+    window.location.href = `${BACKEND_URL}/login`;
   };
 
-  const joinSession = async () => {
+  const joinSession = () => {
     if (identifier) {
       setJoined(true);
     }
@@ -19,17 +24,17 @@ function App() {
   const addSong = async () => {
     if (!identifier || !songUri) return;
     try {
-      //await axios.post("https://render/add-song", { identifier, songUri });
-      await axios.post("https://jukelive.onrender.com/add-song", { identifier, songUri });
+      await axios.post(`${BACKEND_URL}/add-song`, { identifier, songUri });
       alert("Canción añadida a la cola");
     } catch (error) {
       alert("Error al añadir la canción");
     }
   };
 
+  // VISTA JSX
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-900 text-white">
-      <h1 className="text-3xl font-bold mb-6">Jukebox Virtual</h1>
+      <h1 className="text-3xl font-bold mb-6">JukeLive</h1>
       <button
         onClick={loginWithSpotify}
         className="bg-green-500 px-4 py-2 rounded-lg mb-4"
